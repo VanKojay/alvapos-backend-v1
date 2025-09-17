@@ -260,30 +260,15 @@ class ALVAPOSServer {
       Logger.info('All application services initialized successfully');
 
       // Start HTTP server
-      // this.server = this.app.listen(config.port, () => {
-      //   Logger.info(`🚀 ALVA POS MVP Server started successfully`, {
-      //     port: config.port,
-      //     environment: config.env,
-      //     nodeVersion: process.version,
-      //     pid: process.pid,
-      //     databaseUrl: config.database.host + ':' + config.database.port,
-      //     databaseStatus: dbHealthy ? 'healthy' : 'limited_functionality',
-      //   });
-
-      // ✅ hanya kalau environment lokal (development), jalankan listen
-      if (require.main === module) {
-        const dbHealthy = true; // TODO: cek database health di sini
-        app.listen(config.port, () => {
-          Logger.info(`🚀 ALVA POS MVP Server started successfully`, {
-            port: config.port,
-            environment: config.env,
-            nodeVersion: process.version,
-            pid: process.pid,
-            databaseUrl: config.database.host + ":" + config.database.port,
-            databaseStatus: dbHealthy ? "healthy" : "limited_functionality",
-          });
+      this.server = this.app.listen(config.port, () => {
+        Logger.info(`🚀 ALVA POS MVP Server started successfully`, {
+          port: config.port,
+          environment: config.env,
+          nodeVersion: process.version,
+          pid: process.pid,
+          databaseUrl: config.database.host + ':' + config.database.port,
+          databaseStatus: dbHealthy ? 'healthy' : 'limited_functionality',
         });
-      }
         
         if (!dbHealthy) {
           Logger.warn('⚠️  Database connection issue detected');
