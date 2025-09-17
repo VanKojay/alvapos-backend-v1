@@ -49,6 +49,12 @@ import { ordersRouter } from './routes/orders';
 
 // dotenv.config();
 
+
+const app = express();
+// routes
+app.get("/api/hello", (req, res) => {
+  res.json({ message: "Hello from Express on Vercel!" });
+});
 class ALVAPOSServer {
   public app: Application;
   private server: any;
@@ -375,4 +381,5 @@ if (require.main === module) {
 }
 
 export { server };
+export { app };
 export default server.app;

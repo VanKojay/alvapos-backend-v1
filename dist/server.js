@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.server = void 0;
+exports.app = exports.server = void 0;
 const express_1 = __importDefault(require("express"));
 const compression_1 = __importDefault(require("compression"));
 const morgan_1 = __importDefault(require("morgan"));
@@ -26,6 +26,11 @@ const realtime_1 = require("./routes/realtime");
 const RealTimeSyncService_1 = require("./services/RealTimeSyncService");
 const FinancialCalculationService_1 = require("./services/FinancialCalculationService");
 const orders_1 = require("./routes/orders");
+const app = (0, express_1.default)();
+exports.app = app;
+app.get("/api/hello", (req, res) => {
+    res.json({ message: "Hello from Express on Vercel!" });
+});
 class ALVAPOSServer {
     constructor() {
         this.app = (0, express_1.default)();
